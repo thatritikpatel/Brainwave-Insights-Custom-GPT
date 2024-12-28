@@ -1,3 +1,5 @@
+![Brainwave Insights](https://github.com/thatritikpatel/Brainwave-Insights-Custom-GPT/blob/main/documents/brainwave-insights-logo.png)
+
 # Brainwave Insights
 ## Transforming Data into Wisdom
 
