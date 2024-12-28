@@ -1,0 +1,81 @@
+<!-- templates/chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainwave Insights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header class="header">
+        <img src="{{ url_for('static', filename='images/brainwave-insights-logo.png') }}" alt="Brainwave Insights" class="logo">
+        <h1>Brainwave Insights</h1>
+            </header>
+
+    <main class="chat-area">
+        <div class="chat-box" id="chat-box">
+            <!-- Initial AI message -->
+            <div class="ai-message">
+                <p>Welcome to <strong>Brainwave Insights</strong> - Transforming Data into Unmatched Wisdom.</p>
+                <p>How can I assist you today?</p>
+            </div>
+        </div>
+        <div class="input-area">
+            <textarea id="user-input" placeholder="Type your message here..."></textarea>
+            <button id="send-button">Send</button>
+        </div>
+    </main>
+
+    <script>
+        const sendButton = document.getElementById('send-button')
+        const inputField = document.getElementById('user-input')
+        
+        function sendMessage(){
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value;
+        
+            if (message.trim() === "") {
+                return; // Do not send empty messages
+            }
+        
+            // Append user's message
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `<div class="user-message"><p>${message}</p></div>`;
+            userInput.value = '';
+        
+            // Send the message to the server
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response) {
+                    chatBox.innerHTML += `<div class="ai-message">${data.response}</div>`;
+                } else {
+                    chatBox.innerHTML += `<div class="error-message"><p>Error: ${data.error}</p></div>`;
+                }
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                chatBox.innerHTML += `<div class="error-message"><p>Error communicating with the server.</p></div>`;
+            });
+        }
+        
+        // Event listener for the button click
+        sendButton.addEventListener('click', sendMessage);
+        
+        inputField.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission or newline in the input
+                sendMessage();
+            }
+        });  
+    </script>
+</body>
+</html>

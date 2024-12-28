@@ -4,6 +4,13 @@
 **Brainwave Insights** is an AI-powered platform designed to transform raw data into actionable wisdom. Leveraging cutting-edge technologies, it empowers users to interact with an advanced conversational AI system for insightful and precise answers to their queries.
 
 ---
+## Video Demo
+
+Here's a video demo of the project:
+
+https://github.com/user-attachments/assets/7f182af4-523f-42a3-8aa6-f927a1ba9082
+
+---
 
 ## **What is Brainwave Insights?**
 Brainwave Insights is a state-of-the-art AI-driven chat application built with a focus on:
@@ -129,6 +136,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 ---
 
 ## **Contact**
-For support or inquiries, please contact [support@brainwaveinsights.com](mailto:support@brainwaveinsights.com).
+For support or inquiries, please contact.
+- Ritik Patel - [ritik.patel129@gmail.com]
+- Project Link: [https://github.com/thatritikpatel/Brainwave-Insights-Custom-GPT]
 
 "# Brainwave-Insights-Custom-GPT" 
